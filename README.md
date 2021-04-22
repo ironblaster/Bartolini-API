@@ -2,6 +2,28 @@
 Metodo per contattare le API Bartolini
 
 
+Repository maven:
+
+
+
+```
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
+
+Dipendenza Maven:
+
+```
+<dependency>
+    <groupId>com.github.ironblaster</groupId>
+    <artifactId>Bartolini-API</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
+
+
 Semplice Jar che permette di contattare le api Bartolini tramite i metodi presenti nella classe SimpleMethod()
 
 sistemi disponibili:
