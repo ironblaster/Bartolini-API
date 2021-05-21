@@ -1,6 +1,7 @@
 package customPojo.shipmentPojo.common;
 
 import java.io.Serializable;
+import java.util.Base64;
 
 public class Label implements Serializable{
 	
@@ -32,6 +33,14 @@ public class Label implements Serializable{
 
 	public void setStream(String stream) {
 		this.stream = stream;
+	}
+	
+	public byte[] getStreamToByteArray() {
+		return Base64.getDecoder().decode(getStream());
+	}
+	
+	public String getStreamParsedToString() {
+		return new String(getStreamToByteArray());
 	}
 
 	@Override
