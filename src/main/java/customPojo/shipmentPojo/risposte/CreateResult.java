@@ -1,8 +1,10 @@
 package customPojo.shipmentPojo.risposte;
 
+import java.io.Serializable;
+
 import customPojo.shipmentPojo.common.CreateResponse;
 
-public class CreateResult {
+public class CreateResult implements Serializable{
 	
 	
 	CreateResponse createResponse;
