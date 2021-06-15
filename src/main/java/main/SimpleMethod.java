@@ -9,6 +9,7 @@ import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,6 +18,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.commons.io.IOUtils;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import customPojo.ResultSpedID;
 import customPojo.Spedid_idCollo;
@@ -153,6 +155,8 @@ public class SimpleMethod {
 		    byte[] input = gsonParse.toJson(createRequest).getBytes("utf-8");
 		    os.write(input, 0, input.length);			
 		}
+		
+		
 		
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"))) {
 				    StringBuilder response = new StringBuilder();
