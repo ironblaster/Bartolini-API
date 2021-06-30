@@ -2,129 +2,209 @@ package customPojo.shipmentPojo.common;
 
 import java.io.Serializable;
 
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 public class CreateData implements Serializable{
 
-	
+	@Size(max = 1)
 	String network;
 	
+	@Positive
+	@Max(value = 999)
 	int departureDepot;
 	
+	@Positive
+	@Max(value = 9999999)
 	long senderCustomerCode;
 	
+	@Size(max = 3)
+	@NotEmpty
 	String deliveryFreightTypeCode;
 	
+	@NotEmpty
+	@Size(max = 70)
 	String consigneeCompanyName;
 	
+	@NotEmpty
+	@Size(max = 35)
 	String consigneeAddress;
 	
+	@NotEmpty
+	@Size(max = 9)
 	String consigneeZIPCode;
 	
+	@NotEmpty
+	@Size(max = 35)
 	String consigneeCity;
 	
+	@Size(max = 2)
 	String consigneeProvinceAbbreviation;
 	
+	@NotEmpty
+	@Size(max = 2)
 	String consigneeCountryAbbreviationISOAlpha2;
 	
+	@Size(max = 3)
 	String consigneeClosingShift1_DayOfTheWeek;
 	
+	@Size(max = 2)
 	String consigneeClosingShift1_PeriodOfTheDay;
 	
+	@Size(max = 3)
 	String consigneeClosingShift2_DayOfTheWeek;
 	
+	@Size(max = 2)
 	String consigneeClosingShift2_PeriodOfTheDay;
 	
+	@Size(max = 35)
 	String consigneeContactName;
 	
+	@Size(max = 16)
 	String consigneeTelephone;
 	
+	@Email
+	@Size(max = 70)
 	String consigneeEMail;
 	
+	@Size(max = 16)
 	String consigneeMobilePhoneNumber;
 	
+	@Size(max = 1)
 	String isAlertRequired;
 	
+	@Size(max = 16)
 	String consigneeVATNumber;
 	
+	@Size(max = 2)
 	String consigneeVATNumberCountryISOAlpha2;
 	
+	@Size(max = 16)
 	String consigneeItalianFiscalCode;
 	
+	@Size(max = 3)
 	String pricingConditionCode;
 	
+	@Size(max = 1)
 	String serviceType;
 	
+	@DecimalMax(value = "9999999.99")
 	double insuranceAmount;
 	
+	@Size(max = 3)
 	String insuranceAmountCurrency;
 	
+	@Size(max = 15)
 	String senderParcelType;
 	
+	@Max(30)
+	@Positive
 	int numberOfParcels;
 	
+	@DecimalMax(value = "99999.9")
+	@Positive
 	double weightKG;
 	
+	@DecimalMax(value = "99.999")
 	double volumeM3;
 	
+	@DecimalMax(value = "9999999.999")
 	double quantityToBeInvoiced;
 	
+	@DecimalMax(value = "9999999.99")
 	double cashOnDelivery;
 	
+	@Size(max = 1)
+	@NotEmpty
 	String isCODMandatory;
 	
+	@Size(max = 2)
 	String codPaymentType;
 	
+	@Size(max = 3)
 	String codCurrency;
 	
+	@Max(value = 999999999999999L)
+	@Positive
 	long numericSenderReference;
 	
+	@Size(max = 15)
 	String alphanumericSenderReference;
 	
+	@Size(max = 70)
 	String notes;
 	
+	@Size(max = 2)
 	String parcelsHandlingCode;
 	
+	@Size(max = 10)
 	String deliveryDateRequired;
 	
+	@Size(max = 1)
 	String deliveryType;
 	
+	@DecimalMax(value = "9999999.99")
 	double declaredParcelValue;
 	
+	@Size(max = 3)
 	String declaredParcelValueCurrency;
 	
+	@Size(max = 2)
 	String particularitiesDeliveryManagementCode;
 	
+	@Size(max = 2)
 	String particularitiesHoldOnStockManagementCode;
 	
+	@Size(max = 2)
 	String variousParticularitiesManagementCode;
 	
+	@Size(max = 1)
 	String particularDelivery1;
 	
+	@Size(max = 1)
 	String particularDelivery2;
 	
+	@Size(max = 4)
 	String palletType1;
 	
+	@Max(99)
 	int palletType1Number;
 	
+	@Size(max = 4)
 	String palletType2;
 	
+	@Max(99)
 	int palletType2Number;
 	
+	@Size(max = 25)
 	String originalSenderCompanyName;
 	
+	@Size(max = 9)
 	String originalSenderZIPCode;
 	
+	@Size(max = 2)
 	String originalSenderCountryAbbreviationISOAlpha2;
 	
+	@Size(max = 35)
 	String cmrCode;
 	
+	@Size(max = 70)
 	String neighborNameMandatoryAuthorization;
 	
+	@Size(max = 15)
 	String pinCodeMandatoryAuthorization;
 	
+	@Size(max = 33)
 	String packingListPDFName;
 	
+	@Size(max = 1)
 	String packingListPDFFlagPrint;
 	
+	@Size(max = 1)
 	String packingListPDFFlagEmail;
 	
 	String pudoId;

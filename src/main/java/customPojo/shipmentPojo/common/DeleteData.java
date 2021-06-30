@@ -2,10 +2,14 @@ package customPojo.shipmentPojo.common;
 
 import java.io.Serializable;
 
+import jakarta.validation.constraints.Positive;
+
 public class DeleteData implements Serializable{
 	
+	@Positive
 	long senderCustomerCode;
 	
+	@Positive
 	long numericSenderReference;
 	
 	String alphanumericSenderReference;

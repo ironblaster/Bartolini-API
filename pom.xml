@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.ironblaster</groupId>
   <artifactId>Bartolini-API</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <properties>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -11,6 +11,15 @@
   
   <dependencies>
   
+  <!-- https://mvnrepository.com/artifact/jakarta.el/jakarta.el-api -->
+<!-- https://mvnrepository.com/artifact/org.glassfish/jakarta.el -->
+<dependency>
+    <groupId>org.glassfish</groupId>
+    <artifactId>jakarta.el</artifactId>
+    <version>4.0.1</version>
+</dependency>
+
+
   <dependency>
     <groupId>org.apache.openejb</groupId>
     <artifactId>openejb-client</artifactId>
@@ -49,14 +58,23 @@
     <artifactId>commons-io</artifactId>
     <version>2.8.0</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>7.0.1.Final</version>
+</dependency>
 
-    	<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
-		<dependency>
-		    <groupId>javax</groupId>
-		    <artifactId>javaee-api</artifactId>
-		    <version>8.0.1</version>
-		    <scope>provided</scope>
-		</dependency>
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.8.0-M1</version>
+</dependency>
+
+
+
+
   
     	<!-- https://mvnrepository.com/artifact/org.apache.axis/axis -->
 		<dependency>

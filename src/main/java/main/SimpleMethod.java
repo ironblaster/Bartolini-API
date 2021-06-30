@@ -13,10 +13,13 @@ import java.nio.charset.StandardCharsets;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 import javax.xml.rpc.ServiceException;
 
 import org.apache.commons.io.IOUtils;
+import org.hibernate.validator.HibernateValidator;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -25,6 +28,10 @@ import customPojo.Spedid_idCollo;
 import customPojo.shipmentPojo.chiamate.ConfirmRequest;
 import customPojo.shipmentPojo.chiamate.CreateRequest;
 import customPojo.shipmentPojo.chiamate.DeleteRequest;
+import customPojo.shipmentPojo.common.Account;
+import customPojo.shipmentPojo.common.ConfirmData;
+import customPojo.shipmentPojo.common.CreateData;
+import customPojo.shipmentPojo.common.DeleteData;
 import customPojo.shipmentPojo.risposte.ConfirmResult;
 import customPojo.shipmentPojo.risposte.CreateResult;
 import customPojo.shipmentPojo.risposte.DeleteResult;
@@ -67,14 +74,41 @@ import iseries.wsbeans.getlegendaeventi.GetLegendaEventiServices;
 import iseries.wsbeans.getlegendaeventi.GetlegendaeventiInput;
 import iseries.wsbeans.getlegendaeventi.GetlegendaeventiResult;
 import iseries.wsbeans.getlegendaeventi.LegendaEVENTO;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 public class SimpleMethod {
+	
+	static ValidatorFactory factory = Validation.byProvider(HibernateValidator.class).configure().buildValidatorFactory();
+	
+	static Validator validator = factory.getValidator();
 	
 	
 	 public static DeleteResult CancellaSpedizione (DeleteRequest deleteRequest) throws IOException {
 		 	Gson gsonParse = new Gson();
 			URL url = new URL ("https://api.brt.it/rest/v1/shipments/delete");
 						
+			
+			
+			Set<ConstraintViolation<Account>> risultato = validator.validate(deleteRequest.getAccount());
+			 
+			if(!risultato.isEmpty()) {
+				ConstraintViolation<Account> res = risultato.iterator().next();
+				
+				throw new IOException(res.getPropertyPath()+" "+res.getMessage());
+				
+				
+			}
+			
+			Set<ConstraintViolation<DeleteData>> risultatoData = validator.validate(deleteRequest.getDeleteData());
+			 
+			if(!risultatoData.isEmpty()) {
+				ConstraintViolation<DeleteData> res = risultatoData.iterator().next();
+				
+				throw new IOException(res.getPropertyPath()+" "+res.getMessage());
+			}
 			
 		
 		        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -107,6 +141,31 @@ public class SimpleMethod {
 		URL url = new URL ("https://api.brt.it/rest/v1/shipments/shipment");
 		
 		
+		
+		
+		Set<ConstraintViolation<Account>> risultato = validator.validate(confirmRequest.getAccount());
+		 
+		if(!risultato.isEmpty()) {
+			ConstraintViolation<Account> res = risultato.iterator().next();
+			
+			throw new IOException(res.getPropertyPath()+" "+res.getMessage());
+			
+			
+		}
+		
+		Set<ConstraintViolation<ConfirmData>> risultatoData = validator.validate(confirmRequest.getConfirmData());
+		 
+		if(!risultatoData.isEmpty()) {
+			ConstraintViolation<ConfirmData> res = risultatoData.iterator().next();
+			
+			throw new IOException(res.getPropertyPath()+" "+res.getMessage());
+		}
+		
+		
+		
+		
+		
+		
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("PUT");
         connection.setDoOutput(true);
@@ -130,14 +189,34 @@ public class SimpleMethod {
 		
 	}
 	 
-	 
-	 
+	
+	
 	
 	public static CreateResult CreaSpedizione(CreateRequest createRequest) throws IOException {
 		
 		URL url = new URL ("https://api.brt.it/rest/v1/shipments/shipment");
 		
 		HttpURLConnection con = (HttpURLConnection)url.openConnection();
+		
+		
+ 		Set<ConstraintViolation<Account>> risultato = validator.validate(createRequest.getAccount());
+		 
+		if(!risultato.isEmpty()) {
+			ConstraintViolation<Account> res = risultato.iterator().next();
+			
+			throw new IOException(res.getPropertyPath()+" "+res.getMessage());
+			
+			
+		}
+		
+		Set<ConstraintViolation<CreateData>> risultatoData = validator.validate(createRequest.getCreateData());
+		 
+		if(!risultatoData.isEmpty()) {
+			ConstraintViolation<CreateData> res = risultatoData.iterator().next();
+			
+			throw new IOException(res.getPropertyPath()+" "+res.getMessage());
+		}
+		
 		
 		
 		con.setRequestMethod("POST");

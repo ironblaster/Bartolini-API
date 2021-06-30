@@ -2,19 +2,24 @@ package customPojo.shipmentPojo.common;
 
 import java.io.Serializable;
 
+import jakarta.validation.constraints.Size;
+
 public class LabelParameters implements Serializable{
 	
-	
+	@Size(max = 3)
 	String outputType;
 	
 	String offsetX;
 	
 	String offsetY;
 	
+	@Size(max = 1)
 	String isBorderRequired;
 	
+	@Size(max = 1)
 	String isLogoRequired;
 	
+	@Size(max = 1)
 	String isBarcodeControlRowRequired;
 
 	

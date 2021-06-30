@@ -5,6 +5,8 @@ import java.io.Serializable;
 import customPojo.shipmentPojo.common.Account;
 import customPojo.shipmentPojo.common.CreateData;
 import customPojo.shipmentPojo.common.LabelParameters;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 /**
  * Chiamata bartolini per creare una spedizione
@@ -25,7 +27,10 @@ public class CreateRequest implements Serializable{
 	
 	CreateData createData;
 	
+	@NotEmpty
+	@Size(max = 1)
 	String isLabelRequired;
+	
 	
 	LabelParameters labelParameters;
 

@@ -2,6 +2,8 @@ package customPojo.shipmentPojo.chiamate;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Max;
+
 import customPojo.shipmentPojo.common.Account;
 import customPojo.shipmentPojo.common.ConfirmData;
 import customPojo.shipmentPojo.common.CreateData;
@@ -9,7 +11,7 @@ import customPojo.shipmentPojo.common.CreateData;
 public class ConfirmRequest implements Serializable{
 	
 	Account account;
-	
+
 	ConfirmData confirmData;
 
 	public Account getAccount() {

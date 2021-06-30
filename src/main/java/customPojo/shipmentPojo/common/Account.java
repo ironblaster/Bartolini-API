@@ -2,12 +2,14 @@ package customPojo.shipmentPojo.common;
 
 import java.io.Serializable;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Account implements Serializable{
 
 	
-	
+	@NotEmpty
 	String userID;
-	
+	@NotEmpty
 	String password;
 
 	public String getUserID() {
